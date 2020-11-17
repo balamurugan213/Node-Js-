@@ -1,3 +1,8 @@
+/*
+
+
+*/
+
 //1. node [filename] in cmd to rune a js file
 const name="sansa";
 console.log(name);
