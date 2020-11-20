@@ -1,5 +1,6 @@
 const fs=require('fs');
 
+// create stream
 const readStream =fs.createReadStream('./blog.txt',{encoding:'utf-8'});
 const writeStream =fs.createWriteStream('./blog2.txt');
 const writeStreams =fs.createWriteStream('./blog3.txt');
