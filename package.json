@@ -1,0 +1,25 @@
+{
+  "name": "node-js-",
+  "version": "1.0.0",
+  "description": "Learning the node js",
+  "main": "test.js",
+  "dependencies": {
+    "express": "^4.17.1",
+    "lodash": "^4.17.20",
+    "nodemon": "^2.0.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balamurugan213/Node-Js-.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/balamurugan213/Node-Js-/issues"
+  },
+  "homepage": "https://github.com/balamurugan213/Node-Js-#readme"
+}
