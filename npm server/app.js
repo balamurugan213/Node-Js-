@@ -1,4 +1,6 @@
 const express=require('express');
+const { cond } = require('lodash');
+const morgan=require('morgan');
 
 // express app
 const app = express();
@@ -8,6 +10,24 @@ app.set('view engine', 'ejs');
 
 // listening for request
 app.listen(3000);
+
+
+// middleware and static
+app.use(express.static('assets'))
+
+
+// middleware
+// app.use((req ,res, next)=>{
+//     console.log('Now a request is made');
+//     console.log('host:',req.hostname);
+//     console.log('path',req.path);
+//     console.log('method:',req.method);
+//     next();
+// });
+
+// 3 rd party middleware
+app.use(morgan('dev'));
+
 
 app.get('/',(req,res) =>{
     // res.send('<p>Home page</p>');
