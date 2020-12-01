@@ -2,7 +2,9 @@ const express=require('express');
 const { cond, result } = require('lodash');
 const morgan=require('morgan');
 const mongoose=require('mongoose');
-const Blog=require('./models/blog')
+const Blog=require('./models/blog');
+const { urlencoded } = require('express');
+const { render } = require('ejs');
 
 // express app
 const app = express();
@@ -48,8 +50,8 @@ app.get('/all-blog',(req, res)=>{
  })*/
 
 // middleware and static
-app.use(express.static('assets'))
-
+app.use(express.static('assets'));
+app.use(express.urlencoded({extended:true}));
 
 // middleware
 // app.use((req ,res, next)=>{
@@ -90,7 +92,44 @@ app.get('/about',(req,res) =>{
     res.render('about',{ title:'about'});
 });
 
-app.get('/blog/create', (req, res) => {
+app.post('/blogs',(req,res) =>{
+    const blog=new Blog(req.body);
+    console.log(blog);
+    blog.save()
+    .then((result)=>{
+        res.redirect('./');
+    })
+    .catch((err)=>{
+        console.log(err);
+    });
+});
+
+app.get('/blog/:id',(req,res) =>{
+    const id = req.params.id;
+    Blog.findById(id)
+    .then((result)=>{
+        res.render('detail',{blog: result,title:'Blog detail'});
+    })
+    .catch(err =>{
+        console.log(err);
+    });
+})
+
+app.delete('/blog/:id',(req,res) =>{
+    const id = req.params.id;
+    console.log('idd',id)
+    Blog.findByIdAndDelete(id)
+    .then((result)=>{
+        res.json({
+            redirect:'/'
+        });
+    })
+    .catch(err =>{
+        console.log(err);
+    });
+})
+
+app.get('/blogs/create', (req, res) => {
     res.render('create',{ title:'Create a new blog'});
   });
   
