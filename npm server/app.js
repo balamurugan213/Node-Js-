@@ -51,6 +51,7 @@ app.get('/all-blog',(req, res)=>{
 
 // middleware and static
 app.use(express.static('assets'));
+// access static
 app.use(express.urlencoded({extended:true}));
 
 // middleware
